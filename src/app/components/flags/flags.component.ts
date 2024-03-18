@@ -16,4 +16,7 @@ export class FlagsComponent implements OnInit {
 
   }
 
+  gn(){
+    console.log("uf")
+  }
 }
