@@ -1,0 +1,23 @@
+.outer-div {
+    display: flex;
+}
+
+@media only screen and (max-width: 600px) {
+    .outer-div {
+        display: block !important;
+    }
+
+    .image {
+        width: 100% !important;
+        min-height: 50vh;
+      }
+}
+
+img {
+    width: 100%;
+    height: auto;
+  }
+
+  .image {
+    width: 50%;
+  }
