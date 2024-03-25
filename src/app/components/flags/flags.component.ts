@@ -1,5 +1,6 @@
+
 import { Component, OnInit } from '@angular/core';
-import { countries } from '../../countries';
+import {countries} from './../../../assets/countries'
 
 @Component({
   selector: 'app-flags',
@@ -7,12 +8,13 @@ import { countries } from '../../countries';
   styleUrls: ['./flags.component.scss'],
 })
 export class FlagsComponent implements OnInit {
+
   constructor() {}
+  countries = countries;
 
   srcUrl = 'https://flagcdn.com/w1280/de.png';
   srcsetUrl = 'https://flagcdn.com/w2560/de.png 2x';
 
-  countries = countries;
 
   ngOnInit(): void {
     console.log(countries)
@@ -22,3 +24,7 @@ export class FlagsComponent implements OnInit {
     console.log('uf');
   }
 }
+
+
+
+
