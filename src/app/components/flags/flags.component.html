@@ -15,7 +15,16 @@
               <span>Absenden</span>
             </div>
           </div>
-
+          <mat-form-field>
+            <mat-select [formControl]="bankCtrl" placeholder="Land" #singleSelect>
+              <mat-option>
+                <ngx-mat-select-search [formControl]="bankFilterCtrl"></ngx-mat-select-search>
+              </mat-option>
+              <mat-option *ngFor="let country of countries" value="country.country">
+                {{country.country}}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
           <div class="box-2" style="margin-top: 100px">
             <div class="btn btn-two">
               <span (click)="gn()">Keine Ahnung</span>
