@@ -1,4 +1,16 @@
-/* You can add global styles to this file, and also import other style files */
+@import "~@angular/material/prebuilt-themes/indigo-pink.css";
+
+
 body{
     margin: 0 !important;
+    max-width: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+  }
+
+  .mat-mdc-form-field-subscript-wrapper {
+    box-sizing: border-box;
+    width: 100%;
+    position: relative;
+    height: 0 !important;
   }

@@ -1,6 +1,10 @@
 <html>
   <body>
     <div class="outer-div">
+      <div class="pyro" *ngIf="showFirework">
+        <div class="before"></div>
+        <div class="after"></div>
+      </div>
       <div class="left">
         <!--Flaggen Div -->
         <img [src]="srcUrl" [srcset]="srcsetUrl" />
@@ -8,26 +12,85 @@
       <div class="right">
         <!-- Eingaben Div-->
         <div class="right2">
-          <label>Land</label><input type="text" name="" id="" /> <br />
-          <label>Hauptstadt</label><input /><br /><br /><br />
-          <div class="box-1">
-            <div class="btn btn-one">
-              <span>Absenden</span>
-            </div>
-          </div>
-          <mat-form-field>
-            <mat-select [formControl]="bankCtrl" placeholder="Land" #singleSelect>
+          <mat-form-field
+            [ngClass]="{
+              'richtige-antwort': countryIsCorrect,
+              'falsche-antwort': countryIsWrong
+            }"
+          >
+            <mat-select
+              [formControl]="countryCtrl"
+              placeholder="Land"
+              #singleSelect
+            >
               <mat-option>
-                <ngx-mat-select-search [formControl]="bankFilterCtrl"></ngx-mat-select-search>
+                <ngx-mat-select-search
+                  [formControl]="countryFilterCtrl"
+                ></ngx-mat-select-search>
               </mat-option>
-              <mat-option *ngFor="let country of countries" value="country.country">
-                {{country.country}}
+              <mat-option
+                *ngFor="let country of filteredCountries | async"
+                [value]="country"
+              >
+                {{ country.country }}
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <div class="box-2" style="margin-top: 100px">
-            <div class="btn btn-two">
-              <span (click)="gn()">Keine Ahnung</span>
+          <br />
+          <br />
+          <br />
+          <br />
+          <mat-form-field
+            [ngClass]="{
+              'richtige-antwort': capitalIsCorrect,
+              'falsche-antwort': capitalIsWrong
+            }"
+          >
+            <mat-select
+              [formControl]="capitalCtrl"
+              placeholder="Hauptstadt"
+              #singleSelect
+            >
+              <mat-option>
+                <ngx-mat-select-search
+                  [formControl]="capitalFilterCtrl"
+                ></ngx-mat-select-search>
+              </mat-option>
+              <mat-option
+                *ngFor="let country of filteredCapitals | async"
+                [value]="country"
+              >
+                {{ country.capital }}
+              </mat-option>
+            </mat-select>
+          </mat-form-field>
+          <div
+            [ngClass]="showButtons == true ? 'show5' : 'hide5'"
+            class="box-1"
+            style="position: absolute; bottom: -100%"
+          >
+            <div (click)="submit()" class="btn btn-one">
+              <span>Absenden</span>
+            </div>
+          </div>
+
+          <div
+            [ngClass]="showButtons == true ? 'show5' : 'hide5'"
+            class="box-2"
+            style="position: absolute; bottom: -160%"
+          >
+            <div (click)="dontKnow()" class="btn btn-two">
+              <span>Keine Ahnung</span>
+            </div>
+          </div>
+
+          <div
+            [ngClass]="displayNext == true ? 'show5' : 'hide5'"
+            class="box-1"
+            style="position: absolute; bottom: -160%"
+          >
+            <div (click)="next()" class="btn btn-one">
+              <span>Nächste Flagge</span>
             </div>
           </div>
         </div>
