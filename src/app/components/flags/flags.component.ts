@@ -146,15 +146,11 @@ export class FlagsComponent implements OnInit {
       this.capitalCtrl.patchValue(this.currentCountry);
       this.showNextButton();
       this.showButtons = false;
-      this.countryCtrl.disable();
-      this.capitalCtrl.disable();
     }
   }
 
   submit() {
     this.showButtons = false;
-    this.countryCtrl.disable();
-    this.capitalCtrl.disable();
 
     if (
       this.countryCtrl.value &&
@@ -194,8 +190,6 @@ export class FlagsComponent implements OnInit {
   next() {
     this.displayNext = false;
     this.showButtons = true;
-    this.countryCtrl.enable();
-    this.capitalCtrl.enable();
     this.countryIsWrong = false;
     this.capitalIsWrong = false;
     this.countryIsCorrect = false;
